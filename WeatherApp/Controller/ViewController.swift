@@ -10,14 +10,28 @@ import SnapKit
 
 class ViewController: UIViewController {
 
+    let networkWeatherManager = NetworkWeatherManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initalize()
+        presentSearchAlertController(title: "Enter the city name", message: nil, style: .alert)
+        networkWeatherManager.fetchCurrentWeather(city: "Almaty")
     }
 
     private func initalize() {
         
         view.backgroundColor = .systemCyan
+        
+        let searchButton = UIButton(type: .system)
+        searchButton.setImage(UIImage(systemName: "magnifyingglass.circle.fill"), for: .normal)
+        searchButton.tintColor = .white
+        view.addSubview(searchButton)
+        searchButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(64)
+            make.centerX.equalToSuperview()
+        }
+        searchButton.addTarget(self, action: #selector(searchTapped), for: .touchUpInside)
         
         let temperatureLabel = UILabel()
         temperatureLabel.font = UIFont(name: "Apple SD Gothic Neo Regular", size: 96)
@@ -26,7 +40,7 @@ class ViewController: UIViewController {
         view.addSubview(temperatureLabel)
         temperatureLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(32)
-            make.top.equalToSuperview().inset(39) //AC
+            make.top.equalTo(searchButton).inset(39)
         }
         
         let celsiusLabel = UILabel()
@@ -35,7 +49,7 @@ class ViewController: UIViewController {
         celsiusLabel.text = "ºC"
         view.addSubview(celsiusLabel)
         celsiusLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(52) //AC
+            make.top.equalTo(searchButton).inset(52)
             make.leading.equalTo(temperatureLabel).inset(90)
         }
 
@@ -77,6 +91,10 @@ class ViewController: UIViewController {
             make.top.equalTo(weatherIcon).inset(320)
             make.trailing.equalToSuperview().inset(32)
         }
+    }
+    
+    @objc func searchTapped() {
+        presentSearchAlertController(title: "Enter the city name", message: nil, style: .alert)
     }
 }
 
