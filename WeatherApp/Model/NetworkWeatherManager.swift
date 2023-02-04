@@ -8,23 +8,27 @@
 import Foundation
 
 class NetworkWeatherManager {
-     func fetchCurrentWeather(city: String) {
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)"
+    func fetchCurrentWeather(city: String, completion: @escaping (CurrentWeather)->()) {
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=metric"
         guard let url = URL(string: urlString) else { return }
         
         let session = URLSession(configuration: .default)
         session.dataTask(with: url) { data, response, error in
             guard let data = data else { return }
-            self.parseJSON(data: data)
+            guard let currentWeather = self.parseJSON(data: data) else { return }
+            completion(currentWeather)
         }.resume()
     }
     
-    func parseJSON(data: Data) {
+    func parseJSON(data: Data) -> CurrentWeather? {
         do {
-            let currentWeather = try JSONDecoder().decode(CurrentWeatherData.self, from: data)
-            print(currentWeather)
+            let currentWeatherData = try JSONDecoder().decode(CurrentWeatherData.self, from: data)
+            guard let currentWeather = CurrentWeather(currentWeatherData: currentWeatherData) else { return nil }
+            return currentWeather
         } catch {
             print("Error!")
         }
+        return nil
     }
+    
 }

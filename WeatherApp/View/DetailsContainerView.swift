@@ -1,25 +1,17 @@
 //
-//  ViewController.swift
+//  DetailscontainerView.swift
 //  WeatherApp
 //
-//  Created by Maxim Tvilinev on 03.02.2023.
+//  Created by Maxim Tvilinev on 04.02.2023.
 //
 
 import UIKit
-import SnapKit
 
-class ViewController: UIViewController {
-
-    let networkWeatherManager = NetworkWeatherManager()
+extension DetailsViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        initalize()
-        presentSearchAlertController(title: "Enter the city name", message: nil, style: .alert)
-        networkWeatherManager.fetchCurrentWeather(city: "Almaty")
-    }
-
-    private func initalize() {
+    
+    
+    func initalize() {
         
         view.backgroundColor = .systemCyan
         
@@ -28,19 +20,19 @@ class ViewController: UIViewController {
         searchButton.tintColor = .white
         view.addSubview(searchButton)
         searchButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(64)
+            make.top.equalToSuperview().inset(84)
             make.centerX.equalToSuperview()
         }
         searchButton.addTarget(self, action: #selector(searchTapped), for: .touchUpInside)
         
-        let temperatureLabel = UILabel()
+        
         temperatureLabel.font = UIFont(name: "Apple SD Gothic Neo Regular", size: 96)
         temperatureLabel.textColor = .white
         temperatureLabel.text = "19"
         view.addSubview(temperatureLabel)
         temperatureLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(32)
-            make.top.equalTo(searchButton).inset(39)
+            make.top.equalTo(searchButton).inset(100)
         }
         
         let celsiusLabel = UILabel()
@@ -49,52 +41,60 @@ class ViewController: UIViewController {
         celsiusLabel.text = "ºC"
         view.addSubview(celsiusLabel)
         celsiusLabel.snp.makeConstraints { make in
-            make.top.equalTo(searchButton).inset(52)
-            make.leading.equalTo(temperatureLabel).inset(90)
+            make.top.equalTo(searchButton).inset(110)
+            make.leading.equalTo(temperatureLabel.snp.trailing)
         }
-
+        
         let feelsLikeLabel = UILabel()
         feelsLikeLabel.font = UIFont(name: "Apple SD Gothic Neo Regular", size: 24)
         feelsLikeLabel.textColor = .white
         feelsLikeLabel.text = "Feels like"
         view.addSubview(feelsLikeLabel)
         feelsLikeLabel.snp.makeConstraints { make in
-            make.top.equalTo(temperatureLabel).inset(100)
+            make.top.equalTo(temperatureLabel.snp.bottom)
             make.leading.equalToSuperview().inset(32)
         }
-
-        let feelsLikeTemp = UILabel()
+        
         feelsLikeTemp.font = UIFont(name: "Helvetica", size: 24)
         feelsLikeTemp.textColor = .white
         feelsLikeTemp.text = "19ºC"
         view.addSubview(feelsLikeTemp)
         feelsLikeTemp.snp.makeConstraints { make in
-            make.top.equalTo(temperatureLabel).inset(100)
+            make.top.equalTo(temperatureLabel.snp.bottom)
             make.leading.equalTo(feelsLikeLabel).inset(100)
         }
         
-        let weatherIcon = UIImageView()
         weatherIcon.image = UIImage(systemName: "cloud.drizzle.fill")
+        weatherIcon.contentMode = .scaleAspectFill
         weatherIcon.tintColor = .white
         view.addSubview(weatherIcon)
         weatherIcon.snp.makeConstraints { make in
-            make.centerY.centerX.equalToSuperview()
-            make.width.height.equalTo(240)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(feelsLikeLabel).inset(100)
+            make.width.equalTo(240)
+            make.height.equalTo(169)
         }
         
-        let cityLabel = UILabel()
-        cityLabel.font = UIFont(name: "Helvetica", size: 32)
+        cityLabel.font = UIFont(name: "Helvetica", size: 24)
         cityLabel.textColor = .white
         cityLabel.text = "Almaty"
         view.addSubview(cityLabel)
         cityLabel.snp.makeConstraints { make in
-            make.top.equalTo(weatherIcon).inset(320)
+            make.top.equalTo(weatherIcon).inset(250)
             make.trailing.equalToSuperview().inset(32)
         }
-    }
-    
-    @objc func searchTapped() {
-        presentSearchAlertController(title: "Enter the city name", message: nil, style: .alert)
+        
+        let authorLabel = UILabel()
+        authorLabel.font = UIFont(name: "Helvetica", size: 12)
+        authorLabel.textColor = .white
+        authorLabel.text = "Designed by Maxim Tvilinev"
+        view.addSubview(authorLabel)
+        authorLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(30)
+        }
+        
     }
 }
+
 

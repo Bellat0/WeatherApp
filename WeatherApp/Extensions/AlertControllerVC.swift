@@ -7,9 +7,9 @@
 
 import UIKit
 
-extension ViewController {
+extension DetailsViewController {
     
-    func presentSearchAlertController(title: String?, message: String?, style: UIAlertController.Style) {
+    func presentSearchAlertController(title: String?, message: String?, style: UIAlertController.Style, completion: @escaping (String)->()) {
         let ac = UIAlertController(title: title, message: message, preferredStyle: style)
         ac.addTextField() { tf in
             let cities = ["Almaty", "Astana", "Moscow", "Berlin", "Paris"]
@@ -18,9 +18,10 @@ extension ViewController {
         
         let search = UIAlertAction(title: "Search", style: .default) { action in
             let textField = ac.textFields?.first
-            guard let text = textField?.text else { return }
-            if text != "" {
-                
+            guard let cityName = textField?.text else { return }
+            if cityName != "" {
+                let city = cityName.split(separator: " ").joined(separator: "%20")
+                completion(city)
             }
         }
         
