@@ -8,83 +8,78 @@
 import UIKit
 
 extension DetailsViewController {
-    
-    
-    
     func initalize() {
         
         view.backgroundColor = .systemCyan
-        
-        let searchButton = UIButton(type: .system)
+
+        view.addSubview(searchButton)
+
         searchButton.setImage(UIImage(systemName: "magnifyingglass.circle.fill"), for: .normal)
         searchButton.tintColor = .white
-        view.addSubview(searchButton)
         searchButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(84)
+            make.top.equalToSuperview().offset(84)
             make.centerX.equalToSuperview()
         }
         searchButton.addTarget(self, action: #selector(searchTapped), for: .touchUpInside)
-        
-        
-        temperatureLabel.font = UIFont(name: "Apple SD Gothic Neo Regular", size: 96)
-        temperatureLabel.textColor = .white
-        temperatureLabel.text = "19"
-        view.addSubview(temperatureLabel)
-        temperatureLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(32)
-            make.top.equalTo(searchButton).inset(100)
-        }
-        
-        let celsiusLabel = UILabel()
-        celsiusLabel.font = UIFont(name: "Helvetica", size: 32)
-        celsiusLabel.textColor = .white
-        celsiusLabel.text = "ºC"
-        view.addSubview(celsiusLabel)
-        celsiusLabel.snp.makeConstraints { make in
-            make.top.equalTo(searchButton).inset(110)
-            make.leading.equalTo(temperatureLabel.snp.trailing)
-        }
-        
-        let feelsLikeLabel = UILabel()
-        feelsLikeLabel.font = UIFont(name: "Apple SD Gothic Neo Regular", size: 24)
-        feelsLikeLabel.textColor = .white
-        feelsLikeLabel.text = "Feels like"
-        view.addSubview(feelsLikeLabel)
-        feelsLikeLabel.snp.makeConstraints { make in
-            make.top.equalTo(temperatureLabel.snp.bottom)
-            make.leading.equalToSuperview().inset(32)
-        }
-        
-        feelsLikeTemp.font = UIFont(name: "Helvetica", size: 24)
-        feelsLikeTemp.textColor = .white
-        feelsLikeTemp.text = "19ºC"
-        view.addSubview(feelsLikeTemp)
-        feelsLikeTemp.snp.makeConstraints { make in
-            make.top.equalTo(temperatureLabel.snp.bottom)
-            make.leading.equalTo(feelsLikeLabel).inset(100)
-        }
-        
+
+        view.addSubview(weatherIcon)
         weatherIcon.image = UIImage(systemName: "cloud.drizzle.fill")
         weatherIcon.contentMode = .scaleAspectFill
         weatherIcon.tintColor = .white
-        view.addSubview(weatherIcon)
         weatherIcon.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(feelsLikeLabel).inset(100)
+            make.centerY.equalToSuperview().offset(60)
             make.width.equalTo(240)
             make.height.equalTo(169)
         }
-        
+
+        view.addSubview(feelsLikeLabel)
+        feelsLikeLabel.font = UIFont(name: "Apple SD Gothic Neo Regular", size: 24)
+        feelsLikeLabel.textColor = .white
+        feelsLikeLabel.text = "Feels like"
+        feelsLikeLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(weatherIcon).offset(-250)
+            make.leading.equalToSuperview().offset(32)
+        }
+
+        view.addSubview(feelsLikeTemp)
+        feelsLikeTemp.font = UIFont(name: "Helvetica", size: 26)
+        feelsLikeTemp.textColor = .white
+        feelsLikeTemp.text = "NumberºC"
+        feelsLikeTemp.snp.makeConstraints { make in
+            make.centerY.equalTo(feelsLikeLabel).offset(-1.5)
+            make.leading.equalTo(feelsLikeLabel).offset(100)
+
+        }
+
+        view.addSubview(temperatureLabel)
+        temperatureLabel.font = UIFont(name: "Apple SD Gothic Neo Regular", size: 96)
+        temperatureLabel.textColor = .white
+        temperatureLabel.text = "19"
+        temperatureLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(32)
+            make.bottom.equalTo(feelsLikeLabel).inset(20)
+        }
+
+        view.addSubview(celsiusLabel)
+        celsiusLabel.font = UIFont(name: "Helvetica", size: 32)
+        celsiusLabel.textColor = .white
+        celsiusLabel.text = "ºC"
+        celsiusLabel.snp.makeConstraints { make in
+            make.top.equalTo(temperatureLabel).offset(8)
+            make.leading.equalTo(temperatureLabel.snp.trailing)
+        }
+
+        view.addSubview(cityLabel)
         cityLabel.font = UIFont(name: "Helvetica", size: 24)
         cityLabel.textColor = .white
         cityLabel.text = "Almaty"
-        view.addSubview(cityLabel)
         cityLabel.snp.makeConstraints { make in
-            make.top.equalTo(weatherIcon).inset(250)
-            make.trailing.equalToSuperview().inset(32)
+            make.top.equalTo(weatherIcon).offset(250)
+            make.trailing.equalToSuperview().offset(-32)
         }
         
-        let authorLabel = UILabel()
+        /*let authorLabel = UILabel()
         authorLabel.font = UIFont(name: "Helvetica", size: 12)
         authorLabel.textColor = .white
         authorLabel.text = "Designed by Maxim Tvilinev"
@@ -92,7 +87,7 @@ extension DetailsViewController {
         authorLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(30)
-        }
+        }*/
         
     }
 }

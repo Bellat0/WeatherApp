@@ -11,12 +11,15 @@ import SnapKit
 class DetailsViewController: UIViewController {
     
     let networkWeatherManager = NetworkWeatherManager()
-    
+
+    let searchButton = UIButton(type: .system)
     let temperatureLabel = UILabel()
+    let celsiusLabel = UILabel()
     let feelsLikeTemp = UILabel()
-    let cityLabel = UILabel()
+    let feelsLikeLabel = UILabel()
     let weatherIcon = UIImageView()
-    
+    let cityLabel = UILabel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.async {
