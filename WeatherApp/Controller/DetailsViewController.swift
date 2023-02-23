@@ -3,7 +3,7 @@
 //  WeatherApp
 //
 //  Created by Maxim Tvilinev on 03.02.2023.
-//
+//  My first Weather API Application.
 
 import UIKit
 import SnapKit
@@ -23,9 +23,8 @@ class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.async {
-            self.initalize()
-        }
+        self.initalize()
+
         networkWeatherManager.fetchCurrentWeather(city: "Almaty") { [self] currentWeather in
             updateInterfae(currentWeather: currentWeather)
         }
@@ -46,6 +45,7 @@ class DetailsViewController: UIViewController {
             feelsLikeTemp.text = currentWeather.feelslikeString
             cityLabel.text = currentWeather.cityName
             weatherIcon.image = UIImage(systemName: currentWeather.systemIconNameString)
+            descriptionWeatherType.text = currentWeather.weatherType
         }
     }
 }

@@ -19,6 +19,7 @@ struct CurrentWeather {
     }
     
     let cityName: String
+    let weatherType: String
     
     let conditionCode: Int
     var systemIconNameString: String {
@@ -47,5 +48,6 @@ struct CurrentWeather {
         feelslike = currentWeatherData.main.feelsLike
         cityName = currentWeatherData.name
         conditionCode = currentWeatherData.weather.first!.id
+        weatherType = currentWeatherData.weather.first!.main
     }
 }
