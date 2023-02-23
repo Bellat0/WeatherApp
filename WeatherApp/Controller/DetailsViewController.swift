@@ -19,6 +19,7 @@ class DetailsViewController: UIViewController {
     let feelsLikeLabel = UILabel()
     let weatherIcon = UIImageView()
     let cityLabel = UILabel()
+    let descriptionWeatherType = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

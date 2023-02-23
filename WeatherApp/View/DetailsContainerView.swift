@@ -8,6 +8,8 @@
 import UIKit
 
 extension DetailsViewController {
+
+    
     func initalize() {
         
         view.backgroundColor = .systemCyan
@@ -38,17 +40,17 @@ extension DetailsViewController {
         feelsLikeLabel.textColor = .white
         feelsLikeLabel.text = "Feels like"
         feelsLikeLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(weatherIcon).offset(-250)
+            make.bottom.equalTo(weatherIcon.snp.top).offset(-80)
             make.leading.equalToSuperview().offset(32)
         }
 
         view.addSubview(feelsLikeTemp)
         feelsLikeTemp.font = UIFont(name: "Helvetica", size: 26)
         feelsLikeTemp.textColor = .white
-        feelsLikeTemp.text = "NumberºC"
+        feelsLikeTemp.text = "ºC"
         feelsLikeTemp.snp.makeConstraints { make in
             make.centerY.equalTo(feelsLikeLabel).offset(-1.5)
-            make.leading.equalTo(feelsLikeLabel).offset(100)
+            make.leading.equalTo(feelsLikeLabel.snp.trailing).offset(10)
 
         }
 
@@ -75,8 +77,17 @@ extension DetailsViewController {
         cityLabel.textColor = .white
         cityLabel.text = "Almaty"
         cityLabel.snp.makeConstraints { make in
-            make.top.equalTo(weatherIcon).offset(250)
+            make.top.equalTo(weatherIcon.snp.bottom).offset(80)
             make.trailing.equalToSuperview().offset(-32)
+        }
+
+        view.addSubview(descriptionWeatherType)
+        descriptionWeatherType.textColor = .white
+        descriptionWeatherType.font = UIFont.systemFont(ofSize: 15)
+        descriptionWeatherType.text = "Cloudy"
+        descriptionWeatherType.snp.makeConstraints { make in
+            make.trailing.equalTo(-32)
+            make.top.equalTo(cityLabel.snp.bottom).offset(5)
         }
         
         /*let authorLabel = UILabel()
