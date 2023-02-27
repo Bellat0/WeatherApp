@@ -1,6 +1,6 @@
 ## WeatherApp
 
-#### WeatherApp - My first Weather API Application. It has a unique design. I used MVC architecture.
+#### WeatherApp - My first API Application, called WeatherApp. It has a unique design. I used MVC architecture.
 
 #### WeatherApp - Мое первое приложение с использованием API. Приложение имеет уникальный дизайн. Использована архитектура MVC.
 
@@ -11,5 +11,5 @@
 - SnapKit
 
 ## API
-- OpenWeatherMap ``` https://openweathermap.org/
+- OpenWeatherMap https://openweathermap.org/
 
