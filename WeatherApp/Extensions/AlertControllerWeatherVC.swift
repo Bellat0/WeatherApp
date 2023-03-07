@@ -1,5 +1,5 @@
 //
-//  AlertControllerVC.swift
+//  AlertControllerWeatherVC.swift.swift
 //  WeatherApp
 //
 //  Created by Maxim Tvilinev on 03.02.2023.
@@ -7,9 +7,15 @@
 
 import UIKit
 
-extension DetailsViewController {
+extension WeatherViewController {
     
-    func presentSearchAlertController(title: String?, message: String?, style: UIAlertController.Style, completion: @escaping (String)->()) {
+    func presentSearchAlertController(
+        title: String?,
+        message: String?,
+        style: UIAlertController.Style,
+        completion: @escaping (String)->()
+    ) {
+
         let ac = UIAlertController(title: title, message: message, preferredStyle: style)
         ac.addTextField() { tf in
             let cities = ["Almaty", "Astana", "Moscow", "Berlin", "Paris"]
@@ -23,6 +29,7 @@ extension DetailsViewController {
                 let city = cityName.split(separator: " ").joined(separator: "%20")
                 completion(city)
             }
+
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -30,4 +37,5 @@ extension DetailsViewController {
         ac.addAction(cancel)
         present(ac, animated: true)
     }
+    
 }

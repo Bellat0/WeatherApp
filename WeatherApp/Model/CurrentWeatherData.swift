@@ -26,4 +26,5 @@ struct Main: Decodable {
         case temp
         case feelsLike = "feels_like"
     }
+
 }

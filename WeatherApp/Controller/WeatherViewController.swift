@@ -1,19 +1,65 @@
 //
-//  DetailscontainerView.swift
+//  ViewController.swift
 //  WeatherApp
 //
-//  Created by Maxim Tvilinev on 04.02.2023.
-//
+//  Created by Maxim Tvilinev on 03.02.2023.
+//  My first Weather API Application.
 
 import UIKit
+import SnapKit
 
-extension DetailsViewController {
-
+class WeatherViewController: UIViewController {
     
-    func initalize() {
-        
-        view.backgroundColor = .systemCyan
+    let networkWeatherManager = NetworkWeatherManager()
 
+    private let searchButton = UIButton(type: .system)
+    private let temperatureLabel = UILabel()
+    private let celsiusLabel = UILabel()
+    private let feelsLikeTemp = UILabel()
+    private let feelsLikeLabel = UILabel()
+    private let weatherIcon = UIImageView()
+    private let cityLabel = UILabel()
+    private let descriptionWeatherType = UILabel()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initalize()
+
+        networkWeatherManager.fetchCurrentWeather(city: "Almaty") { currentWeather in
+            self.updateInterfae(currentWeather: currentWeather)
+        }
+
+    }
+
+    @objc func searchTapped() {
+
+        presentSearchAlertController(
+            title: "Enter the city name",
+            message: nil, style: .alert
+        ) { city in
+            self.networkWeatherManager.fetchCurrentWeather(city: city) { currentWeather in
+                self.updateInterfae(currentWeather: currentWeather)
+            }
+
+        }
+
+    }
+    
+    func updateInterfae(currentWeather: CurrentWeather) {
+
+        DispatchQueue.main.async {
+            self.temperatureLabel.text = currentWeather.temperatureString
+            self.feelsLikeTemp.text = currentWeather.feelslikeString
+            self.cityLabel.text = currentWeather.cityName
+            self.weatherIcon.image = UIImage(systemName: currentWeather.systemIconNameString)
+            self.descriptionWeatherType.text = currentWeather.weatherType
+        }
+
+    }
+
+    func initalize() {
+
+        view.backgroundColor = .systemCyan
         view.addSubview(searchButton)
 
         searchButton.setImage(UIImage(systemName: "magnifyingglass.circle.fill"), for: .normal)
@@ -89,18 +135,8 @@ extension DetailsViewController {
             make.trailing.equalTo(-32)
             make.top.equalTo(cityLabel.snp.bottom).offset(5)
         }
-        
-        /*let authorLabel = UILabel()
-        authorLabel.font = UIFont(name: "Helvetica", size: 12)
-        authorLabel.textColor = .white
-        authorLabel.text = "Designed by Maxim Tvilinev"
-        view.addSubview(authorLabel)
-        authorLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(30)
-        }*/
-        
-    }
-}
 
+    }
+
+}
 
