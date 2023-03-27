@@ -20,6 +20,7 @@
 		94A025EA29D1CA6000B418BD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 94A025E929D1CA6000B418BD /* SnapKit */; };
 		94A025ED29D1CD3000B418BD /* CurrentWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A025EC29D1CD3000B418BD /* CurrentWeatherData.swift */; };
 		94A025EF29D1CD6300B418BD /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A025EE29D1CD6300B418BD /* CurrentWeather.swift */; };
+		94A025F129D1CD9F00B418BD /* NetworkWeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A025F029D1CD9F00B418BD /* NetworkWeatherManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		94A025E629D1CA4300B418BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		94A025EC29D1CD3000B418BD /* CurrentWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherData.swift; sourceTree = "<group>"; };
 		94A025EE29D1CD6300B418BD /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
+		94A025F029D1CD9F00B418BD /* NetworkWeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWeatherManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			children = (
 				94A025EC29D1CD3000B418BD /* CurrentWeatherData.swift */,
 				94A025EE29D1CD6300B418BD /* CurrentWeather.swift */,
+				94A025F029D1CD9F00B418BD /* NetworkWeatherManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			files = (
 				94A025B629D1C89A00B418BD /* WeatherViewController.swift in Sources */,
 				94A025B229D1C89A00B418BD /* AppDelegate.swift in Sources */,
+				94A025F129D1CD9F00B418BD /* NetworkWeatherManager.swift in Sources */,
 				94A025ED29D1CD3000B418BD /* CurrentWeatherData.swift in Sources */,
 				94A025B429D1C89A00B418BD /* SceneDelegate.swift in Sources */,
 				94A025EF29D1CD6300B418BD /* CurrentWeather.swift in Sources */,

@@ -10,6 +10,8 @@ import SnapKit
 
 class WeatherViewController: UIViewController {
 
+    let networkWeatherManager = NetworkWeatherManager()
+
     private let searchButton = UIButton(type: .system)
     private let temperatureLabel = UILabel()
     private let celsiusLabel = UILabel()
@@ -22,6 +24,10 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutUI()
+
+        networkWeatherManager.fetchCurrentWeather(city: "Almaty") { currentWeather in
+            self.updateInterfae(currentWeather: currentWeather)
+        }
     }
 
     //MARK: layout UI
@@ -36,7 +42,7 @@ class WeatherViewController: UIViewController {
             make.top.equalToSuperview().offset(84)
             make.centerX.equalToSuperview()
         }
-//        searchButton.addTarget(self, action: #selector(searchTapped), for: .touchUpInside)
+        searchButton.addTarget(self, action: #selector(searchTapped), for: .touchUpInside)
 
         view.addSubview(weatherIcon)
         weatherIcon.image = UIImage(systemName: "cloud.drizzle.fill")
@@ -102,6 +108,34 @@ class WeatherViewController: UIViewController {
         descriptionWeatherType.snp.makeConstraints { make in
             make.trailing.equalTo(-32)
             make.top.equalTo(cityLabel.snp.bottom).offset(5)
+        }
+    }
+
+    //MARK: add action for button
+
+    @objc func searchTapped() {
+
+        presentSearchAlertController(
+            title: "Enter the city name",
+            message: nil, style: .alert
+        ) { city in
+            self.networkWeatherManager.fetchCurrentWeather(city: city) { currentWeather in
+                self.updateInterfae(currentWeather: currentWeather)
+            }
+        }
+    }
+
+
+    //MARK: update interface
+
+    func updateInterfae(currentWeather: CurrentWeather) {
+
+        DispatchQueue.main.async {
+            self.temperatureLabel.text = currentWeather.temperatureString
+            self.feelsLikeTemp.text = currentWeather.feelslikeString
+            self.cityLabel.text = currentWeather.cityName
+            self.weatherIcon.image = UIImage(systemName: currentWeather.systemIconNameString)
+            self.descriptionWeatherType.text = currentWeather.weatherType
         }
     }
 
