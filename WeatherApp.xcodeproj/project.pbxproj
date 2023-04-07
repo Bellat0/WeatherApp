@@ -166,9 +166,9 @@
 		94A025EB29D1CD2000B418BD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				94A025F029D1CD9F00B418BD /* NetworkWeatherManager.swift */,
 				94A025EC29D1CD3000B418BD /* CurrentWeatherData.swift */,
 				94A025EE29D1CD6300B418BD /* CurrentWeather.swift */,
-				94A025F029D1CD9F00B418BD /* NetworkWeatherManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

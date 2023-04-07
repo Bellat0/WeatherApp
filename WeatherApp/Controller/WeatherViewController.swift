@@ -21,11 +21,14 @@ class WeatherViewController: UIViewController {
     private let cityLabel = UILabel()
     private let descriptionWeatherType = UILabel()
 
+    private let moonButton = UIButton(type: .system)
+    private let sunButton = UIButton(type: .system)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutUI()
 
-        networkWeatherManager.fetchCurrentWeather(city: "Almaty") { currentWeather in
+        networkWeatherManager.fetchCurrentWeather(city: "Almaty") { [unowned self] currentWeather in
             self.updateInterfae(currentWeather: currentWeather)
         }
     }
@@ -34,8 +37,8 @@ class WeatherViewController: UIViewController {
 
     private func layoutUI() {
         view.backgroundColor = .systemCyan
-        view.addSubview(searchButton)
 
+        view.addSubview(searchButton)
         searchButton.setImage(UIImage(systemName: "magnifyingglass.circle.fill"), for: .normal)
         searchButton.tintColor = .white
         searchButton.snp.makeConstraints { make in
@@ -44,13 +47,31 @@ class WeatherViewController: UIViewController {
         }
         searchButton.addTarget(self, action: #selector(searchTapped), for: .touchUpInside)
 
+        view.addSubview(moonButton)
+        moonButton.setImage(UIImage(systemName: "moon.fill"), for: .normal)
+        moonButton.tintColor = .white
+        moonButton.snp.makeConstraints { make in
+            make.top.equalTo(searchButton.snp.bottom).offset(45)
+            make.centerX.equalTo(searchButton).offset(-25)
+        }
+        moonButton.addTarget(self, action: #selector(switchDarkTheme), for: .touchUpInside)
+
+        view.addSubview(sunButton)
+        sunButton.setImage(UIImage(systemName: "sun.max.fill"), for: .normal)
+        sunButton.tintColor = .white
+        sunButton.snp.makeConstraints { make in
+            make.top.equalTo(searchButton.snp.bottom).offset(45)
+            make.leading.equalTo(moonButton.snp.trailing).offset(25)
+        }
+        sunButton.addTarget(self, action: #selector(switcLightTheme), for: .touchUpInside)
+
         view.addSubview(weatherIcon)
         weatherIcon.image = UIImage(systemName: "cloud.drizzle.fill")
         weatherIcon.contentMode = .scaleAspectFill
         weatherIcon.tintColor = .white
         weatherIcon.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(60)
+            make.centerY.equalToSuperview().offset(90)
             make.width.equalTo(240)
             make.height.equalTo(169)
         }
@@ -118,7 +139,7 @@ class WeatherViewController: UIViewController {
         presentSearchAlertController(
             title: "Enter the city name",
             message: nil, style: .alert
-        ) { city in
+        ) { [unowned self] city in
             self.networkWeatherManager.fetchCurrentWeather(city: city) { currentWeather in
                 self.updateInterfae(currentWeather: currentWeather)
             }
@@ -128,7 +149,7 @@ class WeatherViewController: UIViewController {
 
     //MARK: update interface
 
-    func updateInterfae(currentWeather: CurrentWeather) {
+    private func updateInterfae(currentWeather: CurrentWeather) {
 
         DispatchQueue.main.async {
             self.temperatureLabel.text = currentWeather.temperatureString
@@ -167,6 +188,47 @@ class WeatherViewController: UIViewController {
         ac.addAction(search)
         ac.addAction(cancel)
         present(ac, animated: true)
+    }
+
+    //MARK: Switch dark and light Theme
+
+    @objc func switchDarkTheme() {
+        view.backgroundColor = .systemFill
+
+        searchButton.tintColor = Colors.nightYellow
+        moonButton.tintColor = Colors.nightYellow
+        sunButton.tintColor = Colors.nightYellow
+        temperatureLabel.textColor = Colors.nightYellow
+        celsiusLabel.textColor = Colors.nightYellow
+        feelsLikeTemp.textColor = Colors.nightYellow
+        feelsLikeLabel.textColor = Colors.nightYellow
+        weatherIcon.tintColor = Colors.nightYellow
+        cityLabel.textColor = Colors.nightYellow
+        descriptionWeatherType.textColor = Colors.nightYellow
+    }
+
+    @objc func switcLightTheme() {
+        view.backgroundColor = .systemCyan
+
+        searchButton.tintColor = .white
+        moonButton.tintColor = .white
+        sunButton.tintColor = .white
+        temperatureLabel.textColor = .white
+        celsiusLabel.textColor = .white
+        feelsLikeTemp.textColor = .white
+        feelsLikeLabel.textColor = .white
+        weatherIcon.tintColor = .white
+        cityLabel.textColor = .white
+        descriptionWeatherType.textColor = .white
+    }
+
+    //MARK: Enum Colors
+    public enum Colors {
+        static let nightYellow = UIColor(
+            red: 243/255,
+            green: 255/255,
+            blue: 135/255,
+            alpha: 1)
     }
 }
 
