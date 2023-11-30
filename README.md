@@ -4,6 +4,8 @@
 
 #### WeatherApp - Мое первое приложение с использованием API. Приложение имеет уникальный дизайн. Использована архитектура MVC.
 
+![WeatherApp](https://github.com/Bellat0/WeatherApp/blob/main/WeatherPrieview.png)
+
 ## Requirements
 - Xcode 14
 
