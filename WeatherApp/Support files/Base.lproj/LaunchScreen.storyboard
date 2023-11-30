@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,24 +35,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Maxim Tvilinev" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RM-Ox-8GK">
-                                <rect key="frame" x="80" y="760" width="233" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="OGw-Jd-2z9"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="233" id="p6Z-HP-axY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemCyanColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9RM-Ox-8GK" secondAttribute="bottom" constant="24" id="0ds-a2-l0j"/>
                             <constraint firstItem="4vP-vf-zy4" firstAttribute="top" secondItem="saV-Bh-gcB" secondAttribute="bottom" constant="32" id="4Kr-1x-uPM"/>
                             <constraint firstItem="4vP-vf-zy4" firstAttribute="centerX" secondItem="saV-Bh-gcB" secondAttribute="centerX" id="Mqw-ai-t1y"/>
-                            <constraint firstItem="9RM-Ox-8GK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="XJj-1c-qwq"/>
                             <constraint firstItem="saV-Bh-gcB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="185" id="YlV-cV-eyX"/>
                             <constraint firstItem="saV-Bh-gcB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="uU5-Rd-OXw"/>
                         </constraints>

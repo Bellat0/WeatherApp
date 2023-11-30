@@ -10,7 +10,7 @@ import Foundation
 class NetworkWeatherManager {
 
     func fetchCurrentWeather(city: String, completion: @escaping (CurrentWeather)->()) {
-        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=metric"
+        let urlString = "https://api.openweathermap.org/data/2.5/weather?q=\(city)&appid=\(apiKey)&units=metric&lang=ru"
         guard let url = URL(string: urlString) else { return }
 
         let session = URLSession(configuration: .default)
