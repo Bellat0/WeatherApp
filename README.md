@@ -8,8 +8,9 @@
 
 ## Requirements
 - Xcode 14
+- Designed with MVC pattern
+- Built in Xcode 14
 
 ## Pods
 - SnapKit
-- Designed with MVC pattern
-- Built in Xcode 14
+
