@@ -35,10 +35,7 @@ class MainViewController: UIViewController {
 
         setupViews()
         setupConstraints()
-
-        networkWeatherManager.fetchCurrentWeather(city: "Almaty") { [weak self] currentWeather in
-            self?.updateInterface(currentWeather: currentWeather)
-        }
+        load(city: "Алматы")
     }
 
     // MARK: - Methods
@@ -165,6 +162,18 @@ class MainViewController: UIViewController {
             self.cityLabel.text = currentWeather.cityName
             self.weatherIcon.image = UIImage(systemName: currentWeather.systemIconNameString)
             self.descriptionWeatherType.text = currentWeather.weatherType
+        }
+    }
+
+    private func load(city: String) {
+        networkWeatherManager.fetchCurrentWeather(city: city) { [weak self] currentWeather in
+            self?.updateInterface(currentWeather: currentWeather)
+        }
+    }
+
+    @objc func searchTapped() {
+        presentSearchAlertController(title: "Enter the city name", message: nil) { [weak self] city in
+            self?.load(city: city)
         }
     }
 

@@ -20,14 +20,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
 
-        func createNavigationController() -> UINavigationController {
+        func createMainViewController() -> UINavigationController {
             let mainVC = MainViewController()
             mainVC.title = "WeatherApp"
 
             return UINavigationController(rootViewController: mainVC)
         }
 
-        window?.rootViewController = createNavigationController()
+        window?.rootViewController = createMainViewController()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

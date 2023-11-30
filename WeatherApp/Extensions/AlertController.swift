@@ -11,7 +11,7 @@ extension MainViewController {
 
     //MARK: Create Alert Controller
 
-    private func presentSearchAlertController(
+    func presentSearchAlertController(
         title: String?,
         message: String?,
         completion: @escaping (String) -> ()
@@ -36,19 +36,5 @@ extension MainViewController {
         ac.addAction(search)
         ac.addAction(cancel)
         present(ac, animated: true)
-    }
-
-    //MARK: Add Action for button
-
-    @objc func searchTapped() {
-
-        presentSearchAlertController(
-            title: "Enter the city name",
-            message: nil
-        ) { [unowned self] city in
-            self.networkWeatherManager.fetchCurrentWeather(city: city) { currentWeather in
-                self.updateInterface(currentWeather: currentWeather)
-            }
-        }
     }
 }
