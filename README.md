@@ -1,12 +1,15 @@
-# WeatherApp
+## WeatherApp
 
-My first API Application.
+#### WeatherApp - My first API Application, called WeatherApp. It has a unique design. I used MVC architecture.
 
-![WeatherApp]()
+#### WeatherApp - Мое первое приложение с использованием API. Приложение имеет уникальный дизайн. Использована архитектура MVC.
 
-## Overview
-- Written in Swift
-- Used UIKit
+![WeatherApp](https://github.com/Bellat0/WeatherApp/blob/main/WeatherPrieview.png)
+
+## Requirements
+- Xcode 14
+
+## Pods
 - SnapKit
 - Designed with MVC pattern
 - Built in Xcode 14
