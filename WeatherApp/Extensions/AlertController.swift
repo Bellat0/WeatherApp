@@ -9,7 +9,7 @@ import UIKit
 
 extension MainViewController {
 
-    //MARK: Create Alert Controller
+    // MARK: - Create Alert Controller
 
     func presentSearchAlertController(
         title: String?,

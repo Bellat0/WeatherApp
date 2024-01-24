@@ -15,13 +15,17 @@ class MainViewController: UIViewController {
     private let searchButton = UIButton(type: .system)
     private let moonButton = UIButton(type: .system)
     private let sunButton = UIButton(type: .system)
+
     private let temperatureLabel = UILabel()
     private let celsiusLabel = UILabel()
     private let feelsLikeTemp = UILabel()
     private let feelsLikeLabel = UILabel()
+
     private let weatherIcon = UIImageView()
+
     private let cityLabel = UILabel()
     private let descriptionWeatherType = UILabel()
+
     private let stackView = UIStackView()
 
     // MARK: - Dependencies
@@ -61,9 +65,11 @@ class MainViewController: UIViewController {
 
         moonButton.setImage(UIImage(systemName: "moon.fill"), for: .normal)
         moonButton.tintColor = .white
+        moonButton.addTarget(self, action: #selector(switchDarkTheme), for: .touchUpInside)
 
         sunButton.setImage(UIImage(systemName: "sun.max.fill"), for: .normal)
         sunButton.tintColor = .white
+        sunButton.addTarget(self, action: #selector(switchLightTheme), for: .touchUpInside)
 
         weatherIcon.image = UIImage(systemName: "cloud.drizzle.fill")
         weatherIcon.contentMode = .scaleAspectFill
@@ -107,11 +113,9 @@ class MainViewController: UIViewController {
         }
 
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(searchButton.snp.bottom).offset(45)
+            make.top.equalTo(searchButton.snp.bottom).offset(25)
             make.centerX.equalToSuperview()
         }
-        moonButton.addTarget(self, action: #selector(switchDarkTheme), for: .touchUpInside)
-        sunButton.addTarget(self, action: #selector(switchLightTheme), for: .touchUpInside)
 
         weatherIcon.snp.makeConstraints { make in
             make.centerX.equalToSuperview()

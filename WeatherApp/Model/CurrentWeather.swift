@@ -44,7 +44,7 @@ struct CurrentWeather {
         }
     }
 
-    init?(currentWeatherData: CurrentWeatherData) {
+    init?(currentWeatherData: WeatherData) {
         temperature = currentWeatherData.main.temp
         feelslike = currentWeatherData.main.feelsLike
         cityName = currentWeatherData.name
